@@ -1,6 +1,6 @@
 // 🔑 SUPABASE CONFIG
-const SUPABASE_URL = "https://eslixudvrhnokslgehnz.supabase.co";
-const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVzbGl4dWR2cmhub2tzbGdlaG56Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM3NTE1MjUsImV4cCI6MjA4OTMyNzUyNX0.hr4jab4Iyi7hFftEMIkkBDKm59f356MajJUNSznR1KY";
+const SUPABASE_URL = "https://hsakisqsisenojfcnjdh.supabase.co";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhzYWtpc3FzaXNlbm9qZmNuamRoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQwODU2OTksImV4cCI6MjA4OTY2MTY5OX0.XMen3pFzOu3r1YPoE4au1ez1DLFIG_XJeylpFWNR8xM";
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 // ================= TOAST =================
