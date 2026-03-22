@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+  <link rel="stylesheet" href="styles.css">
+  <script src="js/app.js" defer></script>
+</head>
+
+<body>
+
+<div class="top-nav">
+  <h1 class="app-name">⚡ Taskly</h1>
+</div>
+
+
+<div class="app">
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div>
+      <!-- <h3 id="profileName" style="color: black;">Loading...</h3> -->
+      <small id="profileEmail" style="color: black;"></small>
+    </div>
+  </header>
+
+  <!-- PAGES (ONLY ONE VERSION - CLEAN) -->
+  <div id="available" class="page"></div>
+  <div id="myTasks" class="page"></div>
+  <div id="acceptedTasks" class="page"></div>
+  <div id="profile" class="page"></div>
+  <!-- PROFILE PAGE -->
+  <div id="profile" class="page">
+
+    <div class="profile-card">
+
+      <h2 id="profileNameText" style="color: black;">Loading...</h2>
+      <p id="profileEmailText" style="color: black;">Loading...</p>
+
+      <div class="profile-stats">
+        <div>
+          <h3 id="taskCount" style="color: black;">0</h3>
+          <p>Created Tasks</p>
+        </div>
+
+        <div>
+          <h3 id="acceptedCount" style="color: black;">0</h3>
+          <p>Accepted Tasks</p>
+        </div>
+      </div>
+
+      <button onclick="logout()" class="logout-btn">Logout</button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div id="create" class="page">
+
+  <h2 style="color: black;">Create Task </h2>
+
+  <input id="title" placeholder="Task title">
+  <input id="description" placeholder="Description">
+  <input id="reward" placeholder="Reward (₦)">
+  <input id="whatsapp" placeholder="WhatsApp number">
+
+  <button onclick="createTask()">Post Task</button>
+
+</div>
+
+<!-- FLOAT BUTTON -->
+<button class="fab" onclick="showTab('available')">＋</button>
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <button onclick="showTab('available')">🏠</button>
+  <button onclick="showTab('myTasks')">📌</button>
+  <button onclick="showTab('acceptedTasks')">✅</button>
+  <button onclick="showTab('profile')">👤</button>
+  <button onclick="showTab('create')">➕</button>
+</div>
+
+<div id="taskModal" class="modal">
+  <div class="modal-content">
+
+    <span class="close" onclick="closeModal()">×</span>
+
+    <h2 id="modalTitle">Title</h2>
+    <p id="modalDesc">Description</p>
+<p><b>Reward:</b> ₦<span id="modalReward"></span></p>
+
+    <a id="whatsappBtn" target="_blank">💬 Chat on WhatsApp</a>
+
+    <button id="acceptBtn" style="margin-top:10px;">
+      Accept Task
+    </button>
+
+  </div>
+</div>
+
+
+</body>
+</html>
