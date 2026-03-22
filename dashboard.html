@@ -86,14 +86,15 @@
   <button onclick="showTab('create')">➕</button>
 </div>
 
-<div id="taskModal" class="modal">
-  <div class="modal-content">
+<div id="taskModal" class="modal" onclick="closeModal()">
+  <div class="modal-content" onclick="event.stopPropagation()">
 
     <span class="close" onclick="closeModal()">×</span>
 
     <h2 id="modalTitle">Title</h2>
     <p id="modalDesc">Description</p>
-<p><b>Reward:</b> ₦<span id="modalReward"></span></p>
+
+    <p><b>Reward:</b> ₦<span id="modalReward"></span></p>
 
     <a id="whatsappBtn" target="_blank">💬 Chat on WhatsApp</a>
 
