@@ -17,50 +17,6 @@ function showToast(message) {
 }
 
 // ================= AUTH =================
-async function register() {
-  const nameEl = document.getElementById("name");
-  const emailEl = document.getElementById("email");
-  const passwordEl = document.getElementById("password");
-
-  if (!emailEl || !passwordEl || !nameEl) {
-    return showToast("Missing input fields");
-  }
-
-  const name = nameEl.value.trim();
-  const email = emailEl.value.trim();
-  const password = passwordEl.value.trim();
-
-  if (!name || !email || !password) {
-    return showToast("All fields required");
-  }
-
-  const { data, error } = await supabaseClient.auth.signUp({
-    email,
-    password
-  });
-
-  if (error) return showToast(error.message);
-
-  const user = data.user;
-
-  if (!user) return showToast("User creation failed");
-
-  // ✅ INSERT PROFILE ONCE ONLY
-  const { error: profileError } = await supabaseClient
-    .from("profiles")
-    .insert({
-      id: user.id,
-      full_name: name
-    });
-
-  if (profileError) {
-    console.log(profileError);
-    return showToast("Profile setup failed");
-  }
-
-  showToast("Account created!");
-  window.location.href = "index.html";
-}
 let isRegistering = false;
 
 async function register() {
@@ -70,32 +26,59 @@ async function register() {
   const btn = document.querySelector("button");
   if (btn) btn.disabled = true;
 
-  const email = document.getElementById("email")?.value;
-  const password = document.getElementById("password")?.value;
-  const name = document.getElementById("name")?.value;
+  const name = document.getElementById("name")?.value.trim();
+  const email = document.getElementById("email")?.value.trim();
+  const password = document.getElementById("password")?.value.trim();
 
-  const { data, error } = await supabaseClient.auth.signUp({
-    email,
-    password
-  });
-
-  if (error) {
+  // ✅ VALIDATION
+  if (!name || !email || !password) {
+    showToast("Please fill all fields");
     isRegistering = false;
     if (btn) btn.disabled = false;
-    return showToast(error.message);
+    return;
   }
 
-  const user = data.user;
-  if (!user) return showToast("User creation failed");
+  try {
+    // ✅ CREATE USER
+    const { data, error } = await supabaseClient.auth.signUp({
+      email,
+      password
+    });
 
-  await supabaseClient.from("profiles").insert({
-    id: user.id,
-    full_name: name
-  });
+    if (error) throw error;
 
-  showToast("Account created!");
+    const user = data.user;
 
-  window.location.href = "dashboard.html";
+    if (!user) {
+      throw new Error("User creation failed");
+    }
+
+    // ✅ SAVE PROFILE (ONLY ONCE)
+    const { error: profileError } = await supabaseClient
+      .from("profiles")
+      .insert({
+        id: user.id,
+        full_name: name,
+        email: email
+      });
+
+    if (profileError) throw profileError;
+
+    // ✅ SUCCESS
+    showToast("✅ Account created! Please login");
+
+    setTimeout(() => {
+      window.location.href = "index.html"; // go to login
+    }, 1500);
+
+  } catch (err) {
+    console.error(err);
+    showToast(err.message || "Something went wrong");
+  }
+
+  // ✅ RESET BUTTON
+  isRegistering = false;
+  if (btn) btn.disabled = false;
 }
 
 async function login() {
