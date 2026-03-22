@@ -2,28 +2,68 @@
 <html>
 <head>
   <title>Register</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link rel="stylesheet" href="styles.css">
+
+  <!-- Supabase -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-  <script src="js/app.js"></script>
+
+  <!-- Your JS -->
+  <script src="js/app.js" defer></script>
 </head>
 
 <body class="center">
+
   <div class="card">
     <h2 style="color: black;">Create Account</h2>
 
-    <!-- ✅ FIXED -->
-    <input id="name" placeholder="Full Name">
+    <!-- ✅ FORM (important) -->
+    <form onsubmit="handleRegister(event)">
 
-    <input id="email" placeholder="Email">
-    <input id="password" type="password" placeholder="Password">
+      <input 
+        id="name" 
+        type="text" 
+        placeholder="Full Name" 
+        required
+      >
 
-    <button onclick="register()">Register</button>
+      <input 
+        id="email" 
+        type="email" 
+        placeholder="Email" 
+        required
+      >
+
+      <input 
+        id="password" 
+        type="password" 
+        placeholder="Password" 
+        required
+      >
+
+      <!-- ✅ FIXED BUTTON -->
+      <button id="registerBtn" type="submit">
+        Register
+      </button>
+
+    </form>
 
     <p style="color: black;">
-      Already have an account? <a href="index.html">Login</a>
+      Already have an account? 
+      <a href="index.html">Login</a>
     </p>
   </div>
 
   <div id="toast"></div>
+
+  <!-- ✅ HANDLE FORM SUBMIT -->
+  <script>
+    function handleRegister(e) {
+      e.preventDefault(); // stop page reload
+      register();
+    }
+  </script>
+
 </body>
 </html>
