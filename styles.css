@@ -310,228 +310,71 @@ body {
 
 /* ================= RESPONSIVE DESIGN ================= */
 
-/* ================= GLOBAL ================= */
-* {
-  box-sizing: border-box;
-}
+/* Tablets */
+@media (max-width: 900px) {
+  .tabs {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f4f6f8;
-  color: #111;
-}
-
-/* ================= APP WRAPPER ================= */
-.app {
-  max-width: 500px;
-  margin: auto;
-  background: #f4f6f8;
-  min-height: 100vh;
-}
-
-/* ================= TOP BAR ================= */
-.topbar {
-  background: #ffffff;
-  padding: 15px;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
-
-.topbar h3 {
-  margin: 0;
-  font-size: 16px;
-}
-
-/* ================= PAGES ================= */
-.page {
-  display: none;
-  padding: 15px;
-  padding-bottom: 80px;
-}
-
-.page.active {
-  display: block;
-}
-
-/* ================= TASK CARD ================= */
-.task {
-  background: #ffffff;
-  padding: 15px;
-  margin-bottom: 12px;
-  border-radius: 14px;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.05);
-  transition: 0.2s;
-  cursor: pointer;
-}
-
-.task:active {
-  transform: scale(0.98);
-}
-
-.task h3 {
-  margin: 0 0 5px;
-  font-size: 16px;
-}
-
-.task p {
-  margin: 3px 0;
-  color: #555;
-  font-size: 14px;
-}
-
-/* ================= INPUTS ================= */
-input {
-  width: 100%;
-  padding: 14px;
-  margin: 10px 0;
-  border-radius: 10px;
-  border: none;
-  background: #eef1f5;
-  font-size: 14px;
-}
-
-/* ================= BUTTON ================= */
-button {
-  width: 100%;
-  padding: 14px;
-  border: none;
-  border-radius: 12px;
-  background: #2563eb;
-  color: white;
-  font-size: 15px;
-  cursor: pointer;
-}
-
-button:active {
-  transform: scale(0.98);
-}
-
-/* ================= FLOAT BUTTON ================= */
-.fab {
-  position: fixed;
-  right: 20px;
-  bottom: 80px;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: #2563eb;
-  color: white;
-  font-size: 26px;
-  border: none;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-}
-
-/* ================= BOTTOM NAV ================= */
-.bottom-nav {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  max-width: 500px;
-  background: white;
-  display: flex;
-  justify-content: space-around;
-  padding: 10px 0;
-  border-top: 1px solid #eee;
-}
-
-.bottom-nav button {
-  background: none;
-  border: none;
-  font-size: 20px;
-}
-
-/* ================= PROFILE ================= */
-.profile-card {
-  background: white;
-  padding: 20px;
-  border-radius: 16px;
-  text-align: center;
-}
-
-.profile-card h2 {
-  margin-bottom: 5px;
-}
-
-.profile-stats {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-}
-
-.profile-stats div {
-  background: #f1f5f9;
-  padding: 12px;
-  border-radius: 10px;
-  width: 48%;
-}
-
-/* ================= MODAL ================= */
-.modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.5);
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-content {
-  background: white;
-  padding: 20px;
-  border-radius: 16px;
-  width: 90%;
-  max-width: 400px;
-}
-
-.close {
-  float: right;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-/* ================= WHATSAPP BUTTON ================= */
-#whatsappBtn {
-  display: block;
-  margin-top: 10px;
-  padding: 12px;
-  text-align: center;
-  background: #25D366;
-  color: white;
-  border-radius: 10px;
-  text-decoration: none;
-}
-
-/* ================= TOAST ================= */
-#toast {
-  position: fixed;
-  bottom: 100px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #16a34a;
-  color: white;
-  padding: 12px 20px;
-  border-radius: 10px;
-  display: none;
-}
-
-#toast.show {
-  display: block;
-}
-
-/* ================= RESPONSIVE ================= */
-@media (min-width: 600px) {
-  .app {
-    margin-top: 20px;
-    border-radius: 20px;
-    overflow: hidden;
+  header {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
   }
 }
+
+/* Phones */
+@media (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+
+  header h1 {
+    font-size: 18px;
+  }
+
+  .tabs {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 5px;
+  }
+
+  .tabs button {
+    width: 100%;
+    padding: 12px;
+  }
+
+.tab {
+  display: none;
+  padding: 15px;
+}
+
+.tab.active {
+  display: block;
+}
+
+  .task {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  input {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+  }
+
+  /* Make cards stack nicely */
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 
 
 .top-nav {
